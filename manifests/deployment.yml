@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: flask
-          image: shoushaa/flask-docker:1
+          image: DOCKER_IMAGE
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 5000
