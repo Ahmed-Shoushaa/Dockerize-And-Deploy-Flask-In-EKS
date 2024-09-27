@@ -3,7 +3,8 @@ class ProductService:
         self.products = [
             {"id": 1, "name": "Laptop"},
             {"id": 2, "name": "Smartphone"},
-            {"id": 3, "name": "Pipeline"}
+            {"id": 3, "name": "Pipeline"},
+            {"id": 4, "name": "tv"}
         ]
 
     def get_products(self):
