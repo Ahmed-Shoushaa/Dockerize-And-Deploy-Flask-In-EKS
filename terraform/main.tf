@@ -1,53 +1,67 @@
+##########################
+# Main VPC 
+##########################
 module "vpc" {
   source = "./modules/vpc"
 
-  vpc_cidr = "10.0.0.0/16"
-  vpc_name = "eks-vpc"
+  vpc_cidr = var.vpc_cidr
+  vpc_name = var.vpc_name
 
-  create_internet_gateway = true
-  igw_name                = "eks-igw"
+  create_internet_gateway = var.create_internet_gateway
+  igw_name                = var.igw_name
 }
 
+##########################
+# Public subnet 
+##########################
 module "public_sn" {
   source = "./modules/subnet"
   vpc_id = module.vpc.vpc_id
 
-  sn_name      = "eks-public-sn"
-  sn_cidr      = "10.0.1.0/24"
-  sn_is_public = true
-  sn_az = "us-east-1a"
+  sn_name      = var.pub_sn_name
+  sn_cidr      = var.pub_sn_cidr
+  sn_is_public = var.pub_sn_is_public
+  sn_az        = var.pub_sn_az
 
-  rt_name      = "eks-pubic-sn-rt"
-  rt_rules     = local.public_sn_rules
+  rt_name  = var.pub_sn_rt_name
+  rt_rules = local.public_sn_rules
 }
 
+##########################
+# Nat gateway 
+##########################
 module "nat" {
   source    = "./modules/nat"
   nat_sn_id = module.public_sn.sn_id
-  nat_name  = "eks-nat"
+  nat_name  = var.nat_name
 }
 
+##########################
+# Private subnet 
+##########################
 module "private_sn" {
   source = "./modules/subnet"
   vpc_id = module.vpc.vpc_id
 
-  sn_name = "eks-private-sn"
-  sn_cidr = "10.0.2.0/24"
-  sn_is_public = false
-  sn_az = "us-east-1b"
+  sn_name      = var.pvt_sn_name
+  sn_cidr      = var.pvt_sn_cidr
+  sn_is_public = var.pvt_sn_is_public
+  sn_az        = var.pvt_sn_az
 
-  rt_name = "eks-private-sn-rt"
+  rt_name  = var.pvt_sn_rt_name
   rt_rules = local.private_sn_rules
-  depends_on = [  ]
 }
 
+##########################
+# Eks Cluster
+##########################
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
+  source = "terraform-aws-modules/eks/aws"
 
   cluster_name    = "eks-cluster"
-  cluster_version = "1.27"
+  cluster_version = var.eks_custer_version
 
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access = var.eks_cluster_endpoint_public_access
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = [module.private_sn.sn_id]
@@ -55,15 +69,10 @@ module "eks" {
 
   eks_managed_node_groups = {
     ng1 = {
-      min_size       = 1
-      max_size       = 2
-      desired_size   = 1
-      instance_types = ["t3.small"]
+      min_size       = var.node_group_min_size
+      max_size       = var.node_group_max_size
+      desired_size   = var.node_group_desired_size
+      instance_types = [var.node_group_instance_type]
     }
   }
-}
-
-resource "aws_iam_role" "" {
-  name               = ""
-  assume_role_policy = file("${path.module}/iam-policy.json")
 }
