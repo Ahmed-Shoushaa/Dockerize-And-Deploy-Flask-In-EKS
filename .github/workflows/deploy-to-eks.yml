@@ -51,6 +51,11 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
+
+    # Connect to EKS Cluster to deploy k8s resources 
+    - name: Update kube config
+      run: aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
+
     - name: Install LBC using helm
       id: helm
       run: |
@@ -61,10 +66,6 @@ jobs:
           --set clusterName=eks-cluster \
           --set serviceAccount.create=false \
           --set serviceAccount.name=aws-load-balancer-controller  
-
-    # Connect to EKS Cluster to deploy k8s resources 
-    - name: Update kube config
-      run: aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
 
     - name: Deploy to EKS
       env:

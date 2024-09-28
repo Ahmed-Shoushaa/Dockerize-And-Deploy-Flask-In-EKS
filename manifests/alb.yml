@@ -8,7 +8,7 @@ metadata:
     # Ingress Core Settings
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: eks-public-sn, eks-private-sn
+    alb.ingress.kubernetes.io/subnets: eks-public-sn, eks-public-sn-2
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/target-type: instance
 
