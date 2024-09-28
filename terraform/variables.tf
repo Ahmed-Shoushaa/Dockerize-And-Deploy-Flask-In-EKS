@@ -58,3 +58,8 @@ variable "node_group_min_size" {}
 variable "node_group_max_size" {}
 variable "node_group_desired_size" {}
 variable "node_group_instance_type" {}
+
+##########################
+# Flask ECR
+##########################
+variable "flask_ecr_name" {}

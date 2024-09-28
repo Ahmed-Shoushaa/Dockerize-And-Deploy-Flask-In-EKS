@@ -41,3 +41,8 @@ node_group_min_size      = 1
 node_group_max_size      = 2
 node_group_desired_size  = 2
 node_group_instance_type = "t3.small"
+
+##########################
+# Flask ECR
+##########################
+flask_ecr_name = "flask"
