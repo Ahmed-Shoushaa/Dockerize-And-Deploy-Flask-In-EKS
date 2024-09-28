@@ -113,7 +113,16 @@ eksctl create iamserviceaccount \
   --approve
 ```
 
-3- Trigger the pipeline 
+3- Add Subnet Tags:
+
+From AWS console add this tag to atleast to subnets
+- **Key** – kubernetes.io/role/elb
+
+- **Value** – 1
+
+This will guide k8s alb to be placed in the subnet with the tag attached
+
+4- Trigger the pipeline 
 
 Once the pipeline completes successfully, the following resources will be deployed on your EKS
 <p align="center">
