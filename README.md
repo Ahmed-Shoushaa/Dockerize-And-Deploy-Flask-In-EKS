@@ -51,21 +51,27 @@ Using the provided Terraform scripts will provision the following architecture
 1- Clone this repository to your machine:
    ```bash
    git clone https://github.com/ahmed-shoushaa/dockerize-and-deploy-flask-in-eks.git
-   cd dockerize-and-deploy-flask-in-eks/manifests
+   cd dockerize-and-deploy-flask-in-eks/terraform
    ```
 2- Before running terraform commands create an `s3 bucket` to store the state file and update it's name in terraform/provider.tf or comment the entire block to locally store the state file 
 <p align="center">
   <img src="images\s3.png" alt="s3 vars" width="400"/>
 </p>
-3- Review the plan and input the access keys in the prompt
-<p align="center">
-  <img src="images\keys-prompt.png" alt="terraform prompt" width="400"/>
-</p>
+
+3- Follow the below terraform commands
 
 ```bash
 terraform init
 terraform validate
 terraform plan
+```
+
+4- Review the plan and input the access keys in the prompt
+<p align="center">
+  <img src="images\keys-prompt.png" alt="terraform prompt" width="400"/>
+</p>
+
+```bash
 terraform apply
 ```
 

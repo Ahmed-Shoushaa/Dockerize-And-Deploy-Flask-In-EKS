@@ -1,15 +1,13 @@
 terraform {
   backend "s3" {
-    bucket                  = "your-bucket-unique-name"
-    key                     = "state/eks.tfstate"
-    region                  = var.aws_region
-    access_key              = var.aws_access_key
-    secret_key              = var.aws_secret_key
+    bucket                   = "test-demo-terraform-bucket"
+    key                      = "state/eks.tfstate"
+    shared_credentials_file  = "./credentials"
+    region                   = "us-east-1"
   }
 }
 
 provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
+  region     = "us-east-1"
+  shared_credentials_files = ["./credentials"]
 }
