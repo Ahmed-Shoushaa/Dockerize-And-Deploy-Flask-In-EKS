@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket                  = "test-demo-terraform-bucket"
+    bucket                  = "your-bucket-unique-name"
     key                     = "state/eks.tfstate"
     region                  = var.aws_region
     access_key              = var.aws_access_key
