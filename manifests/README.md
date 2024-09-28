@@ -5,6 +5,8 @@ Configuration Files Overview:
 
 **1- alb.yml:**
 
+requires LoadBalancer controller installation first to allow the usage of ingress resources as alb
+
 - Ingress Settings:
 
     - **kubernetes.io/ingress.class: "alb"**: Specifies that the ingress controller is AWS Application Load Balancer.
