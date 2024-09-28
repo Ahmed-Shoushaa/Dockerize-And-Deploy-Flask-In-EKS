@@ -28,6 +28,22 @@ module "public_sn" {
 }
 
 ##########################
+# Public subnet 
+##########################
+module "public_sn_2" {
+  source = "./modules/subnet"
+  vpc_id = module.vpc.vpc_id
+
+  sn_name      = var.pub_sn_2_name
+  sn_cidr      = var.pub_sn_2_cidr
+  sn_is_public = var.pub_sn_2_is_public
+  sn_az        = var.pub_sn_2_az
+
+  rt_name  = var.pub_sn_2_rt_name
+  rt_rules = local.public_sn_2_rules
+}
+
+##########################
 # Nat gateway 
 ##########################
 module "nat" {

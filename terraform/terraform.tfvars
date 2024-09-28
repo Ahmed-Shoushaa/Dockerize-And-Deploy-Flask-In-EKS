@@ -17,6 +17,15 @@ pub_sn_az        = "us-east-1a"
 pub_sn_rt_name   = "eks-pubic-sn-rt"
 
 ##########################
+# Public subnet 2
+##########################
+pub_sn_2_name      = "eks-public-sn-2"
+pub_sn_2_cidr      = "10.0.0.0/24"
+pub_sn_2_is_public = true
+pub_sn_2_az        = "us-east-1c"
+pub_sn_2_rt_name   = "eks-pubic-sn--2rt"
+
+##########################
 # Nat gateway 
 ##########################
 nat_name = "eks-nat"

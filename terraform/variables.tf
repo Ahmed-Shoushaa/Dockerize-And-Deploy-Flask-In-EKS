@@ -31,6 +31,17 @@ variable "pub_sn_az" {}
 variable "pub_sn_rt_name" {}
 
 ##########################
+# Public subnet 
+##########################
+variable "pub_sn_2_name" {}
+variable "pub_sn_2_cidr" {}
+variable "pub_sn_2_is_public" {
+  type = bool
+}
+variable "pub_sn_2_az" {}
+variable "pub_sn_2_rt_name" {}
+
+##########################
 # Nat gateway 
 ##########################
 variable "nat_name" {}
