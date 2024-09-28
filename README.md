@@ -53,9 +53,17 @@ Using the provided Terraform scripts will provision the following architecture
    git clone https://github.com/ahmed-shoushaa/dockerize-and-deploy-flask-in-eks.git
    cd dockerize-and-deploy-flask-in-eks/terraform
    ```
-2- Before running terraform commands create an `s3 bucket` to store the state file and update it's name in terraform/provider.tf or comment the entire block to locally store the state file 
+2- Before running terraform commands 
+- create an `s3 bucket` in aws to store the state file and update it's name in `terraform/provider.tf` or comment the entire block to locally store the state file 
+
 <p align="center">
-  <img src="images\s3.png" alt="s3 vars" width="400"/>
+  <img src="images\bucket.png" alt="s3 vars" width="400"/>
+</p>
+
+- Add Access keys values to terraform/credentials
+
+<p align="center">
+  <img src="images\keys.png" alt="access keys" width="400"/>
 </p>
 
 3- Follow the below terraform commands
