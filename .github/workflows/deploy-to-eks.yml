@@ -6,14 +6,14 @@ name: Build and Deploy to EKS
 
 on:
   push:
-    branches: [ "master" ]
-    paths: ['code/**']
+    branches: [ "master" ] # Only triggers the workflow when there's a push to the "master" branch
+    paths: ['code/**']     # Only run the workflow if changes are made in the "code" directory
 
 env:
-  AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: flask          # set this to your Amazon ECR repository name
+  AWS_REGION: us-east-1          
+  ECR_REPOSITORY: flask          
   EKS_CLUSTER_NAME: eks-cluster
-  IMAGE_TAG: ${{ github.run_number }}
+  IMAGE_TAG: ${{ github.run_number }} # Tag images with the build number 
 
 permissions:
   contents: read
@@ -51,6 +51,7 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
     
+    # Connect to EKS Cluster to deploy k8s resources 
     - name: Update kube config
       run: aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
 
@@ -59,4 +60,4 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}        
       run: |
         sed -i.bak "s|DOCKER_IMAGE|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" ./manifests/deployment.yml && \
-        kubectl apply -f manifests/deployment.yml
+        kubectl apply -f manifests/..
