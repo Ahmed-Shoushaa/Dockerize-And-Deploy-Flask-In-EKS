@@ -50,8 +50,8 @@ Using the provided Terraform scripts will provision the following architecture
 
 1- Clone this repository to your machine:
    ```bash
-   git clone https://github.com/ahmed-shoushaa/repo-name.git
-   cd repo-name/manifests
+   git clone https://github.com/ahmed-shoushaa/dockerize-and-deploy-flask-in-eks.git
+   cd dockerize-and-deploy-flask-in-eks/manifests
    ```
 2- Before running terraform commands create an `s3 bucket` to store the state file and update it's name in terraform/provider.tf or comment the entire block to locally store the state file 
 <p align="center">
@@ -144,7 +144,7 @@ aws ecr get-login-password --region <region> | docker login --username AWS --pas
 ```
 3- Build and push docker image
 ```bash
-cd repo-name/code
+cd dockerize-and-deploy-flask-in-eks/code
 
 docker build -t flask .
 
