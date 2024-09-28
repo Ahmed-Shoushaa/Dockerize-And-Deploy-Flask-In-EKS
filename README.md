@@ -142,6 +142,10 @@ Once the pipeline completes successfully, the following resources will be deploy
 <p align="center">
   <img src="images\k8s-arch.png" alt="AWS Diagram" width="500"/>
 </p>
+Wait for the ALB to Provision and Use it's url to access the service
+<p align="center">
+  <img src="images\url.png" alt="AWS Diagram" width="500"/>
+</p>
 
 
 ### Manual build and deploy
