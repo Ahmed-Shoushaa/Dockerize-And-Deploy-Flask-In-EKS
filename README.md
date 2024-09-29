@@ -74,10 +74,7 @@ terraform validate
 terraform plan
 ```
 
-4- Review the plan and input the access keys in the prompt
-<p align="center">
-  <img src="images\keys-prompt.png" alt="terraform prompt" width="400"/>
-</p>
+4- Review the plan and apply when ready
 
 ```bash
 terraform apply
