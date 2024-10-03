@@ -45,6 +45,7 @@ pvt_sn_rt_name   = "eks-private-sn-rt"
 eks_cluster_name                   = "eks-cluster"
 eks_custer_version                 = 1.27
 eks_cluster_endpoint_public_access = true
+is_cluster_creator_admin           = true
 # Node Group
 node_group_min_size      = 1
 node_group_max_size      = 2

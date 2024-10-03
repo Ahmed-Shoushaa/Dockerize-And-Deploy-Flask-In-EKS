@@ -65,6 +65,9 @@ variable "eks_custer_version" {}
 variable "eks_cluster_endpoint_public_access" {
   type = bool
 }
+variable "is_cluster_creator_admin" {
+  type = bool
+}
 variable "node_group_min_size" {}
 variable "node_group_max_size" {}
 variable "node_group_desired_size" {}

@@ -83,6 +83,8 @@ module "eks" {
   subnet_ids               = [module.private_sn.sn_id]
   control_plane_subnet_ids = [module.private_sn.sn_id, module.public_sn.sn_id, module.public_sn_2.sn_id]
 
+  enable_cluster_creator_admin_permissions	= var.is_cluster_creator_admin
+
   eks_managed_node_groups = {
     ng1 = {
       min_size       = var.node_group_min_size
