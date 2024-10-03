@@ -10,13 +10,13 @@ This project Dockerizes Flask Python application, provision a Kubernetes cluster
 
 ## Table of Contents
 
-- [Tech Stack](#technologies-used)
+- [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-    - [Provisioning the infrastructure](#provision_the_infrastructure)
-    - [Application Dockerization and deployment](#application_dockerization_and_deployment)
-        - [Using GitHub Actions](#using_github_actions)
-        - [Manual build and deploy](#manual_build_and_deploy)
+    - [Provisioning the infrastructure](#1-provisioning-the-infrastructure)
+    - [Application Dockerization and deployment](#2-application-dockerization-and-deployment)
+        - [Using GitHub Actions](#using-github-actions)
+        - [Manual build and deploy](#manual-build-and-deploy)
 
 ## Tech Stack
 
