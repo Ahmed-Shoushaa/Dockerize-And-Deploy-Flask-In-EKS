@@ -1,8 +1,6 @@
 # Dockerize and Deploy Flask Application
 
-## Project Overview
-
-This project Dockerizes Flask Python application, provision a Kubernetes cluster on AWS using Terraform, and deploy the containerized microservice on that cluster. Additionally, it includes setting up a CI/CD pipeline with GitHub Actions to automate the build and deployment process, , ensuring seamless integration and delivery.
+Flask microservice containerized with Docker, deployed on AWS EKS using Kubernetes and Terraform, with automated CI/CD pipelines powered by GitHub Actions.
 <p align="center">
   <img src="images\full-arch.png" alt="AWS Diagram" width="500"/>
 </p>
