@@ -178,7 +178,7 @@ aws eks update-kubeconfig --region region-code --name eks-cluster
 ```
 6- Create AWS Load Balancer Controller IAM Role: (Refer to step 2 in "Using GitHub Actions")
 
-7- Install AWS Load Balancer Controller using HELM [Installation Details](https://docs.aws.amazon.com/eks/latest/userguide/lbc-helm.html)
+7- Deploy AWS Load Balancer Controller using HELM [Installation Details](https://docs.aws.amazon.com/eks/latest/userguide/lbc-helm.html)
 ```bash
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update eks
@@ -191,7 +191,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
 
-8- Install K8s Metrics server
+8- Deploy K8s Metrics server
 
 This is needed to enable the Horizontal Pod Autoscaler to monitor resource usage.
 
